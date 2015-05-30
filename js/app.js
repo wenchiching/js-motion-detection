@@ -1,7 +1,7 @@
 (function () {
 
 	// config start
-	var OUTLINES = false;
+	var OUTLINES = true;
 	// config end
 
 	window.hotSpots = [];
@@ -75,7 +75,7 @@
 		}, webcamError);
 	} else if (navigator.webkitGetUserMedia) {
 		navigator.webkitGetUserMedia({audio: true, video: true}, function (stream) {
-			video.src = window.webkitURL.createObjectURL(stream);
+			video.src = window.URL.createObjectURL(stream);
 			initialize();
 		}, webcamError);
 	} else {

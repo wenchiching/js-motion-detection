@@ -16,10 +16,10 @@
 
 	// examples for id usage
 	$('#one').on('motion', function(){
-		console.log('touched one');
+		console.log('one');
 	});
 
-	$('#another').on('motion', function(){
+	$('#two').on('motion', function(){
 		console.log('another');
 	});
 })();
