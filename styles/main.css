@@ -212,3 +212,52 @@ video {
 	color: #fff;
 	padding: .5%;
 }
+
+.slider {
+	width: 700px;
+	height: 480px;
+	overflow-x: scroll;
+	overflow: hidden;
+}
+
+.slide {
+	float: left;
+	width: 700px;
+	height: 480px;
+}
+
+.holder {
+	width: 1200%;
+}
+
+#slide-0 {
+  background-image: url(../images/0.jpg);
+  background-size: 680px 480px;
+}
+#slide-1 {
+  background-image: url(../images/1.jpg);
+}
+#slide-2 {
+  background-image: url(../images/2.jpg);
+}
+#slide-3 {
+  background-image: url(../images/3.jpg);
+}
+#slide-4 {
+  background-image: url(../images/4.jpg);
+}
+#slide-5 {
+  background-image: url(../images/5.jpg);
+}
+#slide-6 {
+  background-image: url(../images/6.jpg);
+}
+#slide-7 {
+  background-image: url(../images/7.jpg);
+}
+#slide-8 {
+  background-image: url(../images/8.jpg);
+}
+#slide-9 {
+  background-image: url(../images/9.jpg);
+}

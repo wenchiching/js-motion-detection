@@ -26,6 +26,12 @@
 		canvases.height(content.height());
 		content.css('left', (w - content.width()) / 2);
 		content.css('top', ((h - content.height()) / 2) + 55);
+		$('.slide').css('background-size', content.width()+'px '+content.height()+'px');
+		$('.slide').css('width', content.width()+'px');
+		$('.slide').css('height', content.height()+'px');
+		$('.slider').css('background-size', content.width()+'px '+content.height()+'px');
+		$('.slider').css('width', content.width()+'px');
+		$('.slider').css('height', content.height()+'px');
 	}
 	$(window).resize(resize);
 	$(window).ready(function () {
