@@ -186,21 +186,21 @@ video {
 }
 
 /* Sample hotspots */
-#one {
+#zero {
 	width: 10%;
 	height: 20%;
 	top: 70%;
 	right: 20%;
 }
 
-#two {
+#one {
 	width: 10%;
 	height: 20%;
 	top: 70%;
 	right: 45%;
 }
 
-#three {
+#two {
 	width: 10%;
 	height: 20%;
 	top: 70%;

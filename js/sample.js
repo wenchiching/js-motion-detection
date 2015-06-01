@@ -74,42 +74,74 @@ slider.init();
 	$('.link').on('motion', function(ev, data){
 		console.log('motion detected on a link to', data.spot.el.href);
 	});
-	var switcher1 = false;
-	var switcher2 = false;
+	var switcher = [];
 	var delay1 = false;
 	var delay2 = false;
+	var actions = [];
+	var order = 0;
+	var success=-1;
 	// examples for id usage
+	$('#zero').on('motion', function(){
+		// prevent from trigger too many times
+		if(switcher[0] == true){
+			return;
+		}
+		switcher[0] = true;
+		actions[order++] = "0";
+		setTimeout(function(){ switcher[0] = false; }, 2000);
+		checkActions();
+	});
+
 	$('#one').on('motion', function(){
-		if(delay1 == true || delay2 == true){
+		// prevent from trigger too many times
+		if(switcher[1] == true){
 			return;
 		}
-		if(switcher1 == true){
-			return;
-		}
-		switcher1 = true;
-		setTimeout(function(){ switcher1 = false; }, 1000);
+		switcher[1] = true;
+		actions[order++] = "1";
+		setTimeout(function(){ switcher[1] = false; }, 2000);
+		checkActions();
 	});
 
 	$('#two').on('motion', function(){
-		if( switcher1 == true ){
-			switcher1 = false;
-			delay1 = true;
-			switcher2 = true;
-			setTimeout(function(){ delay1 = false; }, 1000);
+		// prevent from trigger too many times
+		if(switcher[2] == true){
+			return;
 		}
+		switcher[2] = true;
+		actions[order++] = "2";
+		setTimeout(function(){ switcher[2] = false; }, 2000);
+		checkActions();
 	});
 
-	var success=-1;
-	$('#three').on('motion', function(){
-		if( switcher2 == true ){
-			console.log('Success'+success);
-			success++;
+	function checkActions() {
+		if (actions.length == 3){
 			var slider = $('#slider');
 			var content = $('#content');
-			slider.animate({scrollLeft: content.width()*success}, 800)
-			switcher2 = false;
-			delay2 = true;
-			setTimeout(function(){ delay2 = false; }, 1000);
+			if ( actions[0] == '0' && actions[1] == '1' && actions[2] == '2' ){
+				success++;
+				console.log('Success:'+success);
+				success = checkBoundry(success);
+				slider.animate({scrollLeft: content.width()*success}, 800);
+			}
+			if ( actions[0] == '2' && actions[1] == '1' && actions[2] == '0' ){
+				success--;
+				console.log('Success:'+success);
+				success = checkBoundry(success);
+				slider.animate({scrollLeft: content.width()*success}, 800);
+			}
+			clearActions();
 		}
-	});
+	}
+
+	function checkBoundry(success) {
+		return success;
+	}
+
+	function clearActions() {
+		actions.length = 0;
+		switcher = [];
+		order = 0;
+	}
+
 })();
