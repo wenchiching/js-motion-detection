@@ -99,7 +99,7 @@ slider.init();
 		}
 	});
 
-	var success=0;
+	var success=-1;
 	$('#three').on('motion', function(){
 		if( switcher2 == true ){
 			console.log('Success'+success);
