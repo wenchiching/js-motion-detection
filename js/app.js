@@ -248,4 +248,28 @@
 			ctx.strokeRect(o.x, o.y, o.width, o.height);
 		});
 	}
+
+    var debug = 0;
+    $(document).keydown(function(e) {
+    switch(e.which) {
+        case 68: // d
+            if ( !debug ) {
+                console.log('d pressed');
+                $('#canvas-blended').css('display','block');
+                $('#canvas-blended').css('opacity','100');
+                $('.slide').css('opacity','0');
+                debug = 1;
+            }
+            else{
+                console.log('d pressed');
+                $('#canvas-blended').css('display','none');
+                $('#canvas-blended').css('opacity','0');
+                $('.slide').css('opacity','100');
+                debug = 0;
+            }
+        break;
+
+        default: return; // exit this handler for other keys
+    }
+});
 })();
