@@ -185,9 +185,14 @@
 		if (data1.length != data2.length) return null;
 		var i = 0;
 		while (i < (data1.length * 0.25)) {
+			if (( 120 < data1[4 * i] && data1[4 * i] < 180 ) && ( 100 < data1[4 * i + 1] && data1[4 * i + 1] < 140 ) && ( 90 < data1[4 * i + 2] && data1[4 * i + 2] < 120 )){
 			var average1 = (data1[4 * i] + data1[4 * i + 1] + data1[4 * i + 2]) / 3;
 			var average2 = (data2[4 * i] + data2[4 * i + 1] + data2[4 * i + 2]) / 3;
 			var diff = threshold(fastAbs(average1 - average2));
+			}
+			else {
+			var diff = 0;
+			}
 			target[4 * i] = diff;
 			target[4 * i + 1] = diff;
 			target[4 * i + 2] = diff;
@@ -209,7 +214,7 @@
 			}
 			// calculate an average between the color values of the spot area
 			average = Math.round(average / (blendedData.data.length * 0.25));
-			if (average > 10) {
+			if (average > 5) {
 				// over a small limit, consider that a movement is detected
 				data = {confidence: average, spot: hotSpots[h]};
 				$(data.spot.el).trigger('motion', data);

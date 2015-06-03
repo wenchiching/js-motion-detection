@@ -79,7 +79,7 @@ slider.init();
 	var delay2 = false;
 	var actions = [];
 	var order = 0;
-	var success=-1;
+	var success=0;
 	// examples for id usage
 	$('#zero').on('motion', function(){
 		// prevent from trigger too many times
@@ -88,7 +88,7 @@ slider.init();
 		}
 		switcher[0] = true;
 		actions[order++] = "0";
-		setTimeout(function(){ switcher[0] = false; }, 2000);
+		setTimeout(function(){ clearActions(); }, 1000);
 		checkActions();
 	});
 
@@ -99,7 +99,7 @@ slider.init();
 		}
 		switcher[1] = true;
 		actions[order++] = "1";
-		setTimeout(function(){ switcher[1] = false; }, 2000);
+		setTimeout(function(){ clearActions(); }, 1000);
 		checkActions();
 	});
 
@@ -110,12 +110,13 @@ slider.init();
 		}
 		switcher[2] = true;
 		actions[order++] = "2";
-		setTimeout(function(){ switcher[2] = false; }, 2000);
+		setTimeout(function(){ clearActions(); }, 1000);
 		checkActions();
 	});
 
 	function checkActions() {
 		if (actions.length == 3){
+			console.log(actions[0]+actions[1]+actions[2]);
 			var slider = $('#slider');
 			var content = $('#content');
 			if ( actions[0] == '0' && actions[1] == '1' && actions[2] == '2' ){
